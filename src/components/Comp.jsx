@@ -42,8 +42,8 @@ function Comp() {
         <div>
           <ul>
             {list.map((item) => (
-              <li key={item.index} className={classes.list}>
-                <span onClick={() => selectedList(item.index)}>{item.name}</span>
+              <li key={item.index} className={classes.list} onClick={() => selectedList(item.index)}>
+                <span>{item.name}</span>
               </li>
             ))}
           </ul>
@@ -74,26 +74,13 @@ function Comp() {
             />
             <button onClick={() => addItem()}>Сохранить</button>
             <div>
-            {/* <ul>
-            {items.tasks.map((item) => (
-              (item.index === currList) && (
-                <li className={classes.list} key={Date.now()}>
-                <span>{item.name}</span>
-              </li>
-              )
+            <ul>
+              {list.find((elem) => elem.index === currList).tasks.map((item) => (
+                <li key={item.id}>
+                  <span>{item.name}</span>
+                </li>
               ))}
-          </ul> */}
-
-
-          {/* <ul>
-          {items.map((item) => 
-            (item.index === currList) && (
-               <li key={Date.now()}>
-                <span>{item.tasks.name}</span>
-               </li>
-            ) 
-          )}
-          </ul> */}
+            </ul>
             </div>
           </div>
         )}
