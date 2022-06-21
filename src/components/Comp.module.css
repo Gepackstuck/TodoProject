@@ -1,0 +1,22 @@
+ul {
+  list-style-type: none;
+}
+.list {
+  margin: 30px;
+}
+.list:hover {
+  cursor: pointer;
+}
+
+.body {
+  display: flex;
+  max-height: 700px;
+}
+
+.class {
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+}
