@@ -5,35 +5,34 @@ function Comp() {
   const [userInput, setUserInput] = useState("");
   const [todoUserInput, settodoUserInput] = useState("");
   const [list, setList] = useState([]);
-  const [items, setItems] = useState([]);
   const [currList, setCurrList] = useState(null);
 
   const addList = () => {
-    let ListData = {
+    const ListData = {
       index: Date.now(),
       name: userInput,
       tasks: []
-    };
+    }
     setUserInput("");
-    setList([...list, ListData]);
-    setCurrList(ListData.index);
-  };
+    setList([...list, ListData])
+    setCurrList(ListData.index)
+  }
 
   const selectedList = (id) => {
     list.find((elem) => {
       return elem.index === id;
-    });
+    })
     setCurrList(id);
-  };
+  }
 
   const addItem = () => {
-    let NewItemData = {
+    const NewItemData = {
       id: Date.now(),
       name: todoUserInput
     }
     settodoUserInput("");
-    setItems([...items, NewItemData])
-    setList([...list.find((elem) => elem.index === currList).tasks.push(NewItemData)])
+    setList([list.find((elem) => elem.index === currList).tasks.push(NewItemData)])
+    setList([...list])
   }
 
   return (
