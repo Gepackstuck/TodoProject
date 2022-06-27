@@ -35,32 +35,21 @@ function Todo() {
 
   const addItem = () => {
     if (!userInput) return;
-
     if (userInput && !toggle) {
-      //   const newList = [...list];
-      //   const currentListId = list.findIndex((elem) => elem.index === currList);
-      //   newList[currentListId].tasks.find((elem) => {
-      //     if (elem.id === IsEditItem) {
-      //       return { ...elem, name: userInput };
-      //     }
-      //     setList(newList);
-      //   });
-
-      //   // setTodoList(
-      //   //   todoList.map((elem) => {
-      //   //     if (elem.index === IsEditItem) {
-      //   //       return { ...elem, name: userInput };
-      //   //     }
-      //   //     return elem;
-      //   //   })
-      //   // );
-
-      //   setToggle(true);
-      //   setUserInput("");
-      //   setIsEditItem(null);
-      // }
-      // else
-      // {
+      const newList = [...list];
+      const currentListId = newList.findIndex(
+        (elem) => elem.index === currList
+      );
+      newList[currentListId].tasks.map((el) => {
+        if (el.id === IsEditItem) {
+          el.name = userInput;
+        }
+        return newList;
+      });
+      setToggle(true);
+      setUserInput("");
+      setIsEditItem(null);
+    } else {
       const NewItemData = {
         id: Date.now(),
         name: userInput
@@ -162,11 +151,11 @@ function Todo() {
           onKeyPress={(e) => e.key === "Enter" && addItem()}
         ></input>
         {toggle ? (
-          <button onClick={addItem} intent="primary">
+          <button onClick={addItem}>
             <IoMdDoneAll />
           </button>
         ) : (
-          <button onClick={addItem} intent="primary">
+          <button onClick={addItem}>
             <AiOutlineEdit />
           </button>
         )}
@@ -174,7 +163,7 @@ function Todo() {
 
       {/* // TODOS Items ---------------------------------------- */}
 
-      {!list.find((elem) => elem.index === currList).tasks.length ? (
+      {!list.find((elem) => elem.index === currList) ? (
         <h1
           style={{
             textAlign: "center"
