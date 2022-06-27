@@ -3,15 +3,12 @@ import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { FiDelete } from "react-icons/fi";
 import { IoMdDoneAll } from "react-icons/io";
-import { HiOutlineSaveAs } from "react-icons/hi";
 import classes from "./Comp.module.css";
 
 function Todo() {
-  const [list, setList] = useState([
-    { index: Date.now(), name: "Главное", tasks: [] }
-  ]);
+  const [list, setList] = useState([{ index: 1, name: "Главное", tasks: [] }]);
   const [listUserInput, setListUserInput] = useState("");
-  const [currList, setCurrList] = useState(null);
+  const [currList, setCurrList] = useState(1);
   const [userInput, setUserInput] = useState("");
   const [toggle, setToggle] = useState(true);
   const [IsEditItem, setIsEditItem] = useState(null);
@@ -170,7 +167,6 @@ function Todo() {
             onChange={(e) => setUserInput(e.target.value)}
             value={userInput}
             onKeyPress={(e) => e.key === "Enter" && addItem()}
-            // disabled={disableInput}
           ></input>
           {toggle ? (
             <button onClick={addItem}>
@@ -193,7 +189,7 @@ function Todo() {
                     onClick={() => doneItem(item.id)}
                     className={classes.donebtn}
                   >
-                    <HiOutlineSaveAs />
+                    <IoMdDoneAll />
                   </button>
                   <span>{item.name}</span>
                   <button
@@ -223,7 +219,7 @@ function Todo() {
                         onClick={() => doneItem(item.id)}
                         className={classes.donebtn}
                       >
-                        <HiOutlineSaveAs />
+                        <IoMdDoneAll />
                       </button>
                       <span>{item.name}</span>
                       <button
