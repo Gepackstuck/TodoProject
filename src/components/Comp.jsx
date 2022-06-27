@@ -7,7 +7,9 @@ import { HiOutlineSaveAs } from "react-icons/hi";
 import classes from "./Comp.module.css";
 
 function Todo() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState([
+    { index: Date.now(), name: "Главное", tasks: [] }
+  ]);
   const [listUserInput, setListUserInput] = useState("");
   const [currList, setCurrList] = useState(null);
   const [userInput, setUserInput] = useState("");
@@ -16,6 +18,7 @@ function Todo() {
   const [doneList, setDoneList] = useState([]);
 
   const addList = () => {
+    if (!listUserInput) return;
     const ListData = {
       index: Date.now(),
       name: listUserInput,
@@ -35,7 +38,15 @@ function Todo() {
 
   const addItem = () => {
     if (!userInput) return;
-    if (userInput && !toggle) {
+    if (currList === null) {
+      const NewItemData = {
+        id: Date.now(),
+        name: userInput
+      };
+      setUserInput("");
+      setList([list[0].tasks.push(NewItemData)]);
+      setList([...list]);
+    } else if (userInput && !toggle) {
       const newList = [...list];
       const currentListId = newList.findIndex(
         (elem) => elem.index === currList
@@ -59,7 +70,6 @@ function Todo() {
         list.find((elem) => elem.index === currList).tasks.push(NewItemData)
       ]);
       setList([...list]);
-      // }
     }
   };
 
@@ -115,10 +125,11 @@ function Todo() {
   };
 
   return (
-    // INPUT items ----------------------------------------
-    <div className={classes.body}>
+    <div className={classes.frame}>
       <div className={classes.class}>
         <div>
+          <h2 style={{ margin: 0 }}>Списки</h2>
+          <hr />
           <ul>
             {list.map((item) => (
               <li
@@ -127,11 +138,12 @@ function Todo() {
                 onClick={() => selectedList(item.index)}
               >
                 <span>{item.name}</span>
+                <span>({item.tasks.length})</span>
               </li>
             ))}
           </ul>
         </div>
-        <div>
+        <div className={classes.listInput}>
           <input
             type="text"
             onChange={(e) => setListUserInput(e.target.value)}
@@ -139,51 +151,43 @@ function Todo() {
             value={listUserInput}
             onKeyPress={(e) => e.key === "Enter" && addList()}
           ></input>
-          <button onClick={() => addList()}>Сохранить</button>
+          <button onClick={() => addList()}>Добавить</button>
         </div>
       </div>
-
-      <div className={classes.inputField}>
-        <input
-          placeholder="Ввод"
-          onChange={(e) => setUserInput(e.target.value)}
-          value={userInput}
-          onKeyPress={(e) => e.key === "Enter" && addItem()}
-        ></input>
-        {toggle ? (
-          <button onClick={addItem}>
-            <IoMdDoneAll />
-          </button>
-        ) : (
-          <button onClick={addItem}>
-            <AiOutlineEdit />
-          </button>
-        )}
-      </div>
-
-      {/* // TODOS Items ---------------------------------------- */}
-
-      {!list.find((elem) => elem.index === currList) ? (
-        <h1
+      <div className={classes.body}>
+        <h2
           style={{
-            textAlign: "center"
+            textAlign: "center",
+            margin: 0
           }}
         >
-          Пусто!
-        </h1>
-      ) : (
+          Текущие задачи
+        </h2>
+        <hr />
+        <div className={classes.inputField}>
+          <input
+            placeholder="Ввод"
+            onChange={(e) => setUserInput(e.target.value)}
+            value={userInput}
+            onKeyPress={(e) => e.key === "Enter" && addItem()}
+            // disabled={disableInput}
+          ></input>
+          {toggle ? (
+            <button onClick={addItem}>
+              <IoMdDoneAll />
+            </button>
+          ) : (
+            <button onClick={addItem}>
+              <AiOutlineEdit />
+            </button>
+          )}
+        </div>
+
+        {/* // TODOS Items ---------------------------------------- */}
         <div>
-          <h1
-            style={{
-              textAlign: "center"
-            }}
-          >
-            Текущие задачи
-          </h1>
-          <ul className="items-list">
-            {list
-              .find((elem) => elem.index === currList)
-              .tasks.map((item) => (
+          {list.length === 1 ? (
+            <ul className="items-list">
+              {list[0].tasks.map((item) => (
                 <li className={classes.li} key={item.id}>
                   <button
                     onClick={() => doneItem(item.id)}
@@ -207,35 +211,79 @@ function Todo() {
                   </button>
                 </li>
               ))}
-          </ul>
-          <button onClick={() => delAll()} className={classes.delall}>
-            Удалить все
-          </button>
+            </ul>
+          ) : (
+            <div>
+              <ul className="items-list">
+                {list
+                  .find((elem) => elem.index === currList)
+                  .tasks.map((item) => (
+                    <li className={classes.li} key={item.id}>
+                      <button
+                        onClick={() => doneItem(item.id)}
+                        className={classes.donebtn}
+                      >
+                        <HiOutlineSaveAs />
+                      </button>
+                      <span>{item.name}</span>
+                      <button
+                        onClick={() => editItem(item.id)}
+                        className={classes.editbtn}
+                      >
+                        <AiOutlineEdit />
+                      </button>
+                      <button
+                        onDoubleClick={() => delItem(item.id)}
+                        className={classes.delbtn}
+                        title="DoubleTap to delete"
+                      >
+                        <FiDelete />
+                      </button>
+                    </li>
+                  ))}
+              </ul>
+              <button onClick={() => delAll()} className={classes.delall}>
+                Удалить все
+              </button>
+            </div>
+          )}
         </div>
-      )}
 
-      {/* // DONE TODOS items ---------------------------------------- */}
+        {/* // DONE TODOS items ---------------------------------------- */}
+      </div>
+
       {!doneList.length ? (
-        <div />
+        <div className={classes.doneElements}>
+          <h2
+            style={{
+              margin: 0
+            }}
+          >
+            Выполненные задачи
+          </h2>
+          <hr />
+          <h3
+            style={{
+              textAlign: "center"
+            }}
+          >
+            Пусто!
+          </h3>
+        </div>
       ) : (
-        <div>
+        <div className={classes.doneElements}>
+          <h2
+            style={{
+              margin: 0
+            }}
+          >
+            Выполненные задачи
+          </h2>
+          <hr />
           <ul>
-            <h1
-              style={{
-                textAlign: "center"
-              }}
-            >
-              Выполненные задачи
-            </h1>
             {doneList.map((item) => (
               <li key={item.id}>
-                <span
-                  style={{
-                    margin: "0 30px"
-                  }}
-                >
-                  {item.name}
-                </span>
+                <span>{item.name}</span>
               </li>
             ))}
           </ul>

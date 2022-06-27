@@ -6,35 +6,37 @@ button,
 input {
   font-family: monospace;
 }
-ul {
+.body ul {
   list-style-type: none;
-  padding: 10px;
+  padding: 0px;
 }
-li {
+.body li {
   flex-wrap: wrap;
   margin: 10px;
   align-items: center;
   list-style: none;
   position: relative;
-  height: 45px;
+  min-height: 45px;
   line-height: 45px;
   background: #d6d6d6;
   border-radius: 10px;
   margin-bottom: 8px;
+  word-wrap: break-word;
 }
-li:hover {
+.body li:hover {
   background: #d1d1d1;
 }
 .body {
-  margin: 20px auto;
   max-width: 500px;
   width: 100%;
   background: rgb(235, 232, 232);
   border-radius: 10px;
-  padding: 25px;
+  padding: 15px;
   font-family: "Courier New", Courier, monospace;
   filter: drop-shadow(0 0 10px #555);
   border-top: 10px solid #55c49f;
+  height: 100%;
+  margin-right: 20px;
 }
 
 .items {
@@ -116,4 +118,82 @@ li:hover {
   background: #ff5462;
   opacity: 80%;
   width: 92.5%;
+}
+.class {
+  max-width: 300px;
+  width: 100%;
+  background: rgb(235, 232, 232);
+  border-radius: 10px;
+  padding: 15px;
+  font-family: "Courier New", Courier, monospace;
+  filter: drop-shadow(0 0 10px #555);
+  border-top: 10px solid #55c49f;
+  margin-right: 20px;
+}
+.frame {
+  display: flex;
+  justify-content: center;
+}
+.list:hover {
+  cursor: pointer;
+}
+.class ul {
+  list-style-type: none;
+  padding: 0px;
+}
+.class li {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.class li:hover {
+  background: #d1d1d1;
+}
+.class input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 220px;
+}
+.list {
+  display: flex;
+  justify-content: space-between;
+}
+.listInput {
+  display: flex;
+  justify-content: space-between;
+}
+.class {
+  height: 100%;
+}
+.class button {
+  border: none;
+  background: #55c49f;
+  opacity: 100%;
+}
+.class button:hover {
+  cursor: pointer;
+}
+.doneElements {
+  max-width: 300px;
+  width: 100%;
+  background: rgb(235, 232, 232);
+  border-radius: 10px;
+  padding: 15px;
+  font-family: "Courier New", Courier, monospace;
+  filter: drop-shadow(0 0 10px #555);
+  border-top: 10px solid #55c49f;
+  height: 100%;
+}
+.doneElements ul {
+  list-style-type: none;
+  padding: 0px;
+}
+.doneElements li {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.doneElements li:hover {
+  background: #d1d1d1;
 }
