@@ -130,8 +130,10 @@ function Todo() {
           <ul>
             {list.map((item) => (
               <li
+                className={
+                  item.index === currList ? classes.activeList : classes.list
+                }
                 key={item.index}
-                className={classes.list}
                 onClick={() => selectedList(item.index)}
               >
                 <span>{item.name}</span>

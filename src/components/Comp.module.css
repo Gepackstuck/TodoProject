@@ -34,7 +34,7 @@ input {
   padding: 15px;
   font-family: "Courier New", Courier, monospace;
   filter: drop-shadow(0 0 10px #555);
-  border-top: 10px solid #55c49f;
+  border-top: 5px solid #55c49f;
   height: 100%;
   margin-right: 20px;
 }
@@ -70,7 +70,7 @@ input {
   cursor: pointer;
 }
 .delbtn {
-  height: 45px;
+  height: 46px;
   width: 50px;
   border: none;
   border-radius: 0 10px 10px 0;
@@ -89,7 +89,7 @@ input {
   opacity: 100%;
 }
 .editbtn {
-  height: 45px;
+  height: 46px;
   width: 50px;
   border: none;
   /* border-radius: 0 0 0 0; */
@@ -100,7 +100,7 @@ input {
   right: 53px;
 }
 .donebtn {
-  height: 45px;
+  height: 46px;
   width: 50px;
   border: none;
   border-radius: 10px 0 0 10px;
@@ -127,7 +127,7 @@ input {
   padding: 15px;
   font-family: "Courier New", Courier, monospace;
   filter: drop-shadow(0 0 10px #555);
-  border-top: 10px solid #55c49f;
+  border-top: 5px solid #55c49f;
   margin-right: 20px;
 }
 .frame {
@@ -182,7 +182,7 @@ input {
   padding: 15px;
   font-family: "Courier New", Courier, monospace;
   filter: drop-shadow(0 0 10px #555);
-  border-top: 10px solid #55c49f;
+  border-top: 5px solid #55c49f;
   height: 100%;
 }
 .doneElements ul {
@@ -196,4 +196,12 @@ input {
 }
 .doneElements li:hover {
   background: #d1d1d1;
+}
+.activeList {
+  background: #d1d1d1;
+  display: flex;
+  justify-content: space-between;
+}
+.activeList:hover {
+  cursor: pointer;
 }
