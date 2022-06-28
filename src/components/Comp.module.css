@@ -12,7 +12,7 @@ input {
 }
 .body li {
   flex-wrap: wrap;
-  margin: 10px;
+  margin: 0;
   align-items: center;
   list-style: none;
   position: relative;
@@ -27,13 +27,14 @@ input {
   background: #d1d1d1;
 }
 .body {
+  min-height: 125px;
   max-width: 500px;
   width: 100%;
   background: rgb(235, 232, 232);
   border-radius: 10px;
   padding: 15px;
   font-family: "Courier New", Courier, monospace;
-  filter: drop-shadow(0 0 10px #555);
+  filter: drop-shadow(0 0 5px #555);
   border-top: 5px solid #55c49f;
   height: 100%;
   margin-right: 20px;
@@ -44,6 +45,7 @@ input {
 }
 
 .inputField {
+  margin-top: 15px;
   display: flex;
   height: 45px;
   width: 100%;
@@ -110,14 +112,13 @@ input {
   margin-right: 20px;
 }
 .delall {
-  margin: 0 20px 0 20px;
+  padding: 0;
   height: 45px;
-  width: 70px;
   border: none;
   border-radius: 10px;
   background: #ff5462;
   opacity: 80%;
-  width: 92.5%;
+  width: 100%;
 }
 .class {
   max-width: 300px;
@@ -126,7 +127,7 @@ input {
   border-radius: 10px;
   padding: 15px;
   font-family: "Courier New", Courier, monospace;
-  filter: drop-shadow(0 0 10px #555);
+  filter: drop-shadow(0 0 5px #555);
   border-top: 5px solid #55c49f;
   margin-right: 20px;
 }
@@ -153,26 +154,39 @@ input {
   background: transparent;
   border: none;
   outline: none;
-  width: 220px;
+  width: 190px;
+}
+.class input:focus {
+  transform: scale(1.05);
+  border-bottom: 1px solid #d1d1d1;
 }
 .list {
   display: flex;
   justify-content: space-between;
+  border-radius: 0 10px 10px 0;
+}
+.list span {
+  margin-left: 10px;
 }
 .listInput {
   display: flex;
   justify-content: space-between;
+  margin-left: 15px;
 }
 .class {
   height: 100%;
+  min-height: 125px;
+  padding-left: 0px;
 }
 .class button {
   border: none;
   background: #55c49f;
   opacity: 100%;
+  border-radius: 5px;
 }
 .class button:hover {
   cursor: pointer;
+  transform: scale(1.01);
 }
 .doneElements {
   max-width: 300px;
@@ -181,9 +195,11 @@ input {
   border-radius: 10px;
   padding: 15px;
   font-family: "Courier New", Courier, monospace;
-  filter: drop-shadow(0 0 10px #555);
+  filter: drop-shadow(0 0 5px #555);
   border-top: 5px solid #55c49f;
   height: 100%;
+  min-height: 125px;
+  padding-right: 0px;
 }
 .doneElements ul {
   list-style-type: none;
@@ -193,6 +209,10 @@ input {
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
+  border-radius: 10px 0 0 10px;
+}
+.doneElements span {
+  margin-left: 5px;
 }
 .doneElements li:hover {
   background: #d1d1d1;
@@ -201,7 +221,13 @@ input {
   background: #d1d1d1;
   display: flex;
   justify-content: space-between;
+  border-radius: 0 10px 10px 0;
+  font-weight: bold;
 }
 .activeList:hover {
   cursor: pointer;
+  background: #d1d1d1;
+}
+.activeList span {
+  margin-left: 10px;
 }

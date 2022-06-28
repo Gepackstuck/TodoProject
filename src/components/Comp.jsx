@@ -125,7 +125,7 @@ function Todo() {
     <div className={classes.frame}>
       <div className={classes.class}>
         <div>
-          <h2 style={{ margin: 0 }}>Списки</h2>
+          <h3 style={{ margin: 0, textAlign: "center" }}>Списки</h3>
           <hr />
           <ul>
             {list.map((item) => (
@@ -154,14 +154,14 @@ function Todo() {
         </div>
       </div>
       <div className={classes.body}>
-        <h2
+        <h3
           style={{
             textAlign: "center",
             margin: 0
           }}
         >
           Текущие задачи
-        </h2>
+        </h3>
         <hr />
         <div className={classes.inputField}>
           <input
@@ -252,13 +252,14 @@ function Todo() {
 
       {!doneList.length ? (
         <div className={classes.doneElements}>
-          <h2
+          <h3
             style={{
-              margin: 0
+              margin: 0,
+              textAlign: "center"
             }}
           >
             Выполненные задачи
-          </h2>
+          </h3>
           <hr />
           <h3
             style={{
@@ -270,13 +271,14 @@ function Todo() {
         </div>
       ) : (
         <div className={classes.doneElements}>
-          <h2
+          <h3
             style={{
+              textAlign: "center",
               margin: 0
             }}
           >
             Выполненные задачи
-          </h2>
+          </h3>
           <hr />
           <ul>
             {doneList.map((item) => (
