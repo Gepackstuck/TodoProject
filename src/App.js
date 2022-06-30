@@ -1,10 +1,12 @@
-import Comp from "./components/Comp";
-import "./styles.css";
+import Todo from "./components/Todo";
+import "./App.css";
 
-export default function App() {
+function App() {
   return (
     <div className="App">
-      <Comp />
+      <Todo />
     </div>
   );
 }
+
+export default App;
