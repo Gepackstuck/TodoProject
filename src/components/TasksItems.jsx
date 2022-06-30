@@ -7,8 +7,7 @@ export default function TasksItems({
   AiOutlineEdit,
   delItem,
   FiDelete,
-  currList,
-  delAll
+  currList
 }) {
   return (
     <div>
@@ -69,9 +68,6 @@ export default function TasksItems({
                 </li>
               ))}
           </ul>
-          <button onClick={() => delAll()} className={classes.delall}>
-            Удалить все
-          </button>
         </div>
       )}
     </div>

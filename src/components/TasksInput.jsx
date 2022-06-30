@@ -5,18 +5,24 @@ export default function TasksInput({
   addItem,
   toggle,
   IoMdDoneAll,
-  AiOutlineEdit
+  AiOutlineEdit,
+  delAll
 }) {
   return (
     <div>
-      <h3
-        style={{
-          textAlign: "center",
-          margin: 0
-        }}
-      >
-        Текущие задачи
-      </h3>
+      <div style={{ display: "flex", justifyContent: "end" }}>
+        <h3
+          style={{
+            margin: 0,
+            paddingRight: 70
+          }}
+        >
+          Текущие задачи
+        </h3>
+        <button onClick={() => delAll()} className={classes.delall}>
+          Удалить все
+        </button>
+      </div>
       <hr />
       <div className={classes.inputField}>
         <input

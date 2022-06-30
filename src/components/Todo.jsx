@@ -147,6 +147,7 @@ function Todo() {
           toggle={toggle}
           IoMdDoneAll={IoMdDoneAll}
           AiOutlineEdit={AiOutlineEdit}
+          delAll={delAll}
         />
         <TasksItems
           list={list}
@@ -157,7 +158,6 @@ function Todo() {
           delItem={delItem}
           FiDelete={FiDelete}
           currList={currList}
-          delAll={delAll}
         />
       </div>
       <div className={classes.doneElements}>

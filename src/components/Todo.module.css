@@ -112,13 +112,10 @@ input {
   margin-right: 20px;
 }
 .delall {
-  padding: 0;
-  height: 45px;
   border: none;
-  border-radius: 10px;
   background: #ff5462;
-  opacity: 80%;
-  width: 100%;
+  opacity: 100%;
+  border-radius: 5px;
 }
 .lists {
   max-width: 300px;
