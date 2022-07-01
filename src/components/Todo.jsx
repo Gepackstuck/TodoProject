@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AiOutlineEdit } from "react-icons/ai";
 import { FiDelete } from "react-icons/fi";
@@ -10,7 +10,6 @@ import Lists from "./Lists";
 import ListsInput from "./ListsInput";
 import TasksInput from "./TasksInput";
 import TasksItems from "./TasksItems";
-
 import classes from "./Todo.module.css";
 
 function Todo() {
@@ -20,7 +19,21 @@ function Todo() {
   const [userInput, setUserInput] = useState("");
   const [toggle, setToggle] = useState(true);
   const [IsEditItem, setIsEditItem] = useState(null);
+
   const [doneList, setDoneList] = useState([]);
+
+  useEffect(() => {
+    const localTodos = localStorage.getItem("todos");
+    if (localTodos) {
+      setDoneList(JSON.parse(localTodos));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (doneList.length) {
+      localStorage.setItem("todos", JSON.stringify(doneList));
+    }
+  }, [doneList]);
 
   const addList = () => {
     if (!listUserInput) return;
